@@ -4,12 +4,12 @@ export class Movie extends Component {
     const { title, poster_path, overview } = this.props
 
     return (
-      <li className="list-group-item m-2">
-        {title}
-        <span className="movieItem m-2">
+      <li className="list-group-item">
+        <span className="movieItem">
           <img src={poster_path} height="100" width="100" />
         </span>
-        <span className="movieItem m-2">{overview}</span>
+        <span>{title}</span>
+        <span className="movieItem">{overview}</span>
       </li>
     )
   }

@@ -1,12 +1,27 @@
 import React, { Component } from 'react'
 import { Movie } from './components/Movie'
-import sampleMovies from './data/movies-api'
 
 class App extends Component {
   state = {
-    movies: sampleMovies,
+    movies: [],
   }
+
+  async componentDidMount() {
+    fetch(
+      'https://api.themoviedb.org/3/discover/movie?primary_release_year=1989&sort_by=popularity.desc&api_key=5dc961f3bd05194965b6ed408775ebab'
+    )
+      .then(response => {
+        return response.json()
+      })
+      .then(responseFromApi => {
+        console.log(responseFromApi)
+
+        this.setState({ movies: responseFromApi.results })
+      })
+  }
+
   render() {
+    console.log(this.state.movies)
     const moviesToRender = this.state.movies.map(movie => (
       <Movie
         key={movie.id}
