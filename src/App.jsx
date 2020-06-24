@@ -14,14 +14,11 @@ class App extends Component {
         return response.json()
       })
       .then(responseFromApi => {
-        console.log(responseFromApi)
-
         this.setState({ movies: responseFromApi.results })
       })
   }
 
   render() {
-    console.log(this.state.movies)
     const moviesToRender = this.state.movies.map(movie => (
       <Movie
         key={movie.id}
@@ -32,15 +29,17 @@ class App extends Component {
     ))
 
     return (
-      <main className="container p-5">
-        <div className="jumbotron bg-info text-white">
-          <h1 className="display-4">Flicks With An 80's Twist</h1>
-          <p className="lead">
-            A simple movies API that displays information about 80's movies.
-          </p>
-        </div>
-        <ul className="list-group">{moviesToRender}</ul>
-      </main>
+      <body>
+        <main className="container p-5">
+          <div className="jumbotron">
+            <h1 className="display-4 text-white">Flicks With An 80's Twist</h1>
+            <p className="lead text-white">
+              A simple movies API that displays information about 80's movies.
+            </p>
+          </div>
+          <ul className="list-group">{moviesToRender}</ul>
+        </main>
+      </body>
     )
   }
 }

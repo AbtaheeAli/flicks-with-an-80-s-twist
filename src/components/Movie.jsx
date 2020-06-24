@@ -4,7 +4,7 @@ export class Movie extends Component {
     const { title, poster_path, overview } = this.props
 
     return (
-      <li className="media border border-info">
+      <li className="media text-white">
         <img
           src={`https://image.tmdb.org/t/p/w185${poster_path}`}
           height="150"
