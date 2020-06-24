@@ -1,16 +1,21 @@
 import React, { Component } from 'react'
-class Movie extends Component {
-  render() {
-    return (
-      <article>
-        <li className="list-group-item">{this.props.name}</li>
-      </article>
-    )
-  }
-}
+import { Movie } from './components/Movie'
+import sampleMovies from './data/movies-api'
 
 class App extends Component {
+  state = {
+    movies: sampleMovies,
+  }
   render() {
+    const moviesToRender = this.state.movies.map(movie => (
+      <Movie
+        key={movie.id}
+        title={movie.title}
+        poster_path={movie.poster_path}
+        overview={movie.overview}
+      />
+    ))
+
     return (
       <main className="container p-5">
         <div className="jumbotron bg-info text-white">
@@ -19,13 +24,7 @@ class App extends Component {
             A simple movies API that displays information about 80's movies.
           </p>
         </div>
-        <ul className="list-group">
-          <Movie name="Movie 1" />
-          <Movie name="Movie 2" />
-          <Movie name="Movie 3" />
-          <Movie name="Movie 4" />
-          <Movie name="Movie 5" />
-        </ul>
+        <ul className="list-group">{moviesToRender}</ul>
       </main>
     )
   }
