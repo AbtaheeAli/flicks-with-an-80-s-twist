@@ -4,12 +4,17 @@ export class Movie extends Component {
     const { title, poster_path, overview } = this.props
 
     return (
-      <li className="list-group-item">
-        <span className="movieItem">
-          <img src={poster_path} height="100" width="100" />
+      <li className="media border border-info">
+        <img
+          src={`https://image.tmdb.org/t/p/w185${poster_path}`}
+          height="150"
+          width="150"
+          className="p-2"
+        />
+        <span className="movie-info">
+          <h5 className="mt-2 mb-1">{title}</h5>
+          {overview}
         </span>
-        <span>{title}</span>
-        <span className="movieItem">{overview}</span>
       </li>
     )
   }
